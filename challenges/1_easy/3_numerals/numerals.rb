@@ -5,44 +5,40 @@
 # if num > 5 and <9, add to the left side
 # if num is 10, use the lookup table
 
-class RomanNumerals
+class RomanNumeral
+  attr_accessor :number
 
-  NUMBERS = { 1=> 'I', 5=> 'V', 10=> 'X', 50=> 'L', 100=> 'C', 500=> 'D', 1000=> 'M'}
+  NUMBERS = {
+    "M" => 1000,
+    "CM" => 900,
+    "D" => 500,
+    "CD" => 400,
+    "C" => 100,
+    "XC" => 90,
+    "L" => 50,
+    "XL" => 40,
+    "X" => 10,
+    "IX" => 9,
+    "V" => 5,
+    "IV" => 4,
+    "I" => 1
+    }
 
   def initialize(decimal)
     @decimal = decimal
   end
 
-  def convert_to_roman
-    result = []
-    decimal
+  def to_roman
+    result = ''
+    to_convert = @decimal
+
+    NUMBERS.each do |letter, number|
+      multiplier, remainder = to_convert.divmod(number)
+      if multiplier > 0
+        result += (letter * multiplier)
+      end
+      to_convert = remainder
+    end
+    result
   end
 end
-  NNN = { 1=> 'I', 5=> 'V', 10=> 'X', 50=> 'L', 100=> 'C', 500=> 'D', 1000=> 'M'}
-
-
-def convert_to_roman(decimal)
-    result = ''
-    arr = decimal.to_s.chars.map(&:to_i)
-    arr.each_with_index do |num, i|
-      
-      if decimal/1000 > 0
-        NNN[1000] * (decimal/1000)
-      end
-
-      if (decimal%1000)/100 > 0
-
-      end
-    end
-end
-
-
-if n < 4
-  NNN[100] * n
-end
-
-if n == 4
-  
-
-p 
-convert_to_roman(3453)
