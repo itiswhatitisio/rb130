@@ -1,10 +1,3 @@
-# first find each number on its decimal place
-# if num < 4, increment to the right side
-# if num == 4, subtract from 5
-# if num is 5, then output 5
-# if num > 5 and <9, add to the left side
-# if num is 10, use the lookup table
-
 class RomanNumeral
   attr_accessor :number
 
