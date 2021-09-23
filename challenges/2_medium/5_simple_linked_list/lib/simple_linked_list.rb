@@ -5,6 +5,14 @@ class LinkedList
     @list = head
   end
 
+  def push(value)
+    element = Element.new(value, @head)
+    @head = element
+  end
+
+  def pop
+  end
+
   def from_a(argument = [])
   end
 
